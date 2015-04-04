@@ -12,7 +12,7 @@ Installation
 ------------
 
     cd /etc/init.d
-    sudo wget https://github.com/railsware/passenger-initscript/raw/master/passenger
+    sudo wget https://github.com/CollabraMusic/passenger-initscript/raw/master/passenger
     sudo chmod +x passenger
 
     sudo /etc/init.d/passenger setup
