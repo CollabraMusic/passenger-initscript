@@ -6,20 +6,17 @@ Goals
 
 * bash script
 * muliple passenger standalone instances
-* rvm support
 * yaml application configuration
 
 Installation
 ------------
 
     cd /etc/init.d
-    sudo wget https://github.com/railsware/passenger-initscript/raw/master/passenger
+    sudo wget https://github.com/CollabraMusic/passenger-initscript/raw/master/passenger
     sudo chmod +x passenger
 
     sudo /etc/init.d/passenger setup
 
-    sudo cp /etc/passenger.d/example.yml.disabled /etc/passenger.d/app1.yml
-    sudo cp /etc/passenger.d/example.yml.disabled /etc/passenger.d/app2.yml
     ...
 
 Edit configurations according to your needs.
@@ -28,9 +25,8 @@ Edit configurations according to your needs.
 
 /etc/passenger/blog.yml
 
-    rvm: ruby-1.9.2@example
     cwd: /var/apps/blog/current
-    user: deploy
+    user: www-data
     port: 8080
     environment: production
     max-pool-size: 4
