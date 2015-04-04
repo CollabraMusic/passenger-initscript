@@ -9,14 +9,6 @@
 # Short-Description: manage multiple passenger instances
 ### END INIT INFO
 
-RVM_SHELL="rvm-shell"
-
-[ -x /usr/local/bin/rvm-shell ] && RVM_SHELL="/usr/local/bin/rvm-shell"
-
-[ -x /usr/local/rvm/bin/rvm-shell ] && RVM_SHELL="/usr/local/rvm/bin/rvm-shell"
-
-RVM_PATH="/usr/local/rvm"
-
 PASSENGER_SYSTEM_BIN="passenger"
 
 PASSENGER_RVM_BIN="passenger"
@@ -26,7 +18,6 @@ CONFIG_DIR="/etc/passenger.d"
 CONFIG_FILE_EXT=".yml"
 
 CONFIG_SHELL_OPTIONS=(
-  rvm
   cwd
 )
 
@@ -153,11 +144,7 @@ passenger_ctl() {
 
   local options="$_RETURN"
 
-  if [ -z "$config_rvm" ]; then
-    argv="$PASSENGER_SYSTEM_BIN $command $options"
-  else
-    argv="rvm_path=$RVM_PATH $RVM_SHELL $config_rvm -c '$PASSENGER_RVM_BIN $command $options'"
-  fi
+  argv="$PASSENGER_SYSTEM_BIN $command $options"
 
   [ -n "$DEBUG" ] && echo $argv
 
@@ -220,7 +207,6 @@ setup() {
 
   echo "Creating config example: $config_file"
   data=""
-  data+="rvm: ruby-1.9.2@example\n"
   data+="cwd: /var/apps/blog/current\n"
   data+="user: deploy\n"
   data+="port: 8080\n"
